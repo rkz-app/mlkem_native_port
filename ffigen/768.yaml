@@ -1,0 +1,43 @@
+output: '../lib/src/mlkem768_bindings.dart'
+name: 'MLKEM768'
+description: 'Holds ffigen generated implementation bindings for MLKEM768'
+headers:
+  entry-points:
+    - '../src/include/mlkem768_api.h'
+comments: true
+preamble: |
+  // ignore_for_file: always_specify_types
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+
+ffi-native:
+  asset-id: 'src/mlkem768_bindings.dart'
+  enabled: true
+
+functions:
+  include:
+    - 'mlkem768.*'
+
+# ADD THIS: This stops the flood of system typedefs
+typedefs:
+  include:
+    - 'mlkem768.*'  # Only include typedefs starting with mlkem768
+  exclude:
+    - '.*'          # Explicitly exclude everything else just to be safe
+
+structs:
+  exclude:
+    - '.*'
+
+unions:
+  exclude:
+    - '.*'
+
+# ALSO CONSIDER: If you have global variables you don't want
+globals:
+  exclude:
+    - '.*'
+
+macros:
+  include:
+    - '^MLKEM768.*'
